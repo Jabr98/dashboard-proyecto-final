@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Administrativo — Proyecto</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- CDN Chart.js (cliente) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <div class="dashboard-grid" id="dashboard">
+
+    <nav id="sidebar" class="sidebar" role="navigation" aria-label="Navegación principal" aria-expanded="true">
+      <div class="sidebar-header">
+        <button id="toggleSidebar" class="collapse-btn" aria-label="Colapsar menú" aria-controls="sidebar" aria-expanded="true">☰</button>
+        <h1 class="brand">MiDashboard</h1>
+      </div>
+
+      <ul class="nav-list" role="menu">
+        <li role="none"><a role="menuitem" tabindex="0" href="#" class="active">📊 Resumen</a></li>
+        <li role="none"><a role="menuitem" tabindex="0" href="#table">🗂️ Inventario</a></li>
+        <li role="none"><a role="menuitem" tabindex="0" href="#analytics">📈 Analítica</a></li>
+        <li role="none"><a role="menuitem" tabindex="0" href="#settings">⚙️ Ajustes</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <small>Usuario: <strong>Jessica</strong></small>
+      </div>
+    </nav>
+
+    <header class="header" role="banner">
+      <div class="header-left">
+        <h2 class="page-title">Resumen administrativo</h2>
+        <p class="subtitle">Visión general rápida de métricas clave</p>
+      </div>
+
+      <div class="header-right">
+        <label class="search">
+          <span class="visually-hidden">Buscar</span>
+          <input aria-label="Buscar en el dashboard" placeholder="Buscar..." />
+        </label>
+        <button class="icon-btn" aria-label="Notificaciones">🔔</button>
+        <button class="icon-btn" aria-label="Perfil">👤</button>
+      </div>
+    </header>
+
+    <main id="main" class="main" role="main" aria-labelledby="main-title">
+      <h3 id="main-title" class="visually-hidden">Contenido principal</h3>
+
+      <section class="cards" aria-label="Tarjetas de resumen">
+        <article class="card" tabindex="0" role="region" aria-labelledby="card1-title">
+          <div class="card-body">
+            <h4 id="card1-title">Ventas hoy</h4>
+            <p class="large">$ 4,360</p>
+            <small class="muted">+12% desde ayer</small>
+          </div>
+          <div class="card-cta" aria-hidden="true">▲</div>
+        </article>
+
+        <article class="card" tabindex="0" role="region" aria-labelledby="card2-title">
+          <div class="card-body">
+            <h4 id="card2-title">Productos</h4>
+            <p class="large">1,248</p>
+            <small class="muted">34 nuevos esta semana</small>
+          </div>
+          <div class="card-cta" aria-hidden="true">📦</div>
+        </article>
+
+        <article class="card" tabindex="0" role="region" aria-labelledby="card3-title">
+          <div class="card-body">
+            <h4 id="card3-title">Usuarios activos</h4>
+            <p class="large">3,910</p>
+            <small class="muted">+3% vs 7 días</small>
+          </div>
+          <div class="card-cta" aria-hidden="true">👥</div>
+        </article>
+
+        <article class="card" tabindex="0" role="region" aria-labelledby="card4-title">
+          <div class="card-body">
+            <h4 id="card4-title">Tasa de conversión</h4>
+            <p class="large">2.9%</p>
+            <small class="muted">Objetivo 3.5%</small>
+          </div>
+          <div class="card-cta" aria-hidden="true">⚡</div>
+        </article>
+      </section>
+
+      <section class="row" id="analytics" aria-label="Gráficos y analítica">
+        <div class="chart-card" role="region" aria-labelledby="chart-title">
+          <h4 id="chart-title">Ingresos últimos 7 días</h4>
+          <canvas id="lineChart" aria-label="Gráfico de ingresos últimos siete días" role="img"></canvas>
+        </div>
+
+        <div class="table-card" role="region" aria-labelledby="table-title">
+          <h4 id="table-title">Top productos</h4>
+          <table id="top-table" aria-describedby="table-desc">
+            <caption id="table-desc">Lista de los 5 productos con mayor venta</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Ventas</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Camisa azul</td>
+                <td>18</td>
+                <td>142</td>
+                <td><span class="badge in">En stock</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Zapatillas RUN</td>
+                <td>5</td>
+                <td>128</td>
+                <td><span class="badge low">Bajo</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Bolso cuero</td>
+                <td>0</td>
+                <td>89</td>
+                <td><span class="badge out">Agotado</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Chaqueta térmica</td>
+                <td>24</td>
+                <td>82</td>
+                <td><span class="badge in">En stock</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Gafas sol</td>
+                <td>40</td>
+                <td>64</td>
+                <td><span class="badge in">En stock</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="fullwidth" id="table" aria-label="Tabla completa">
+        <h4>Inventario completo</h4>
+        <div class="table-container">
+          <table class="full-table" aria-describedby="inv-desc">
+            <caption id="inv-desc">Tabla de inventario con foco en accesibilidad</caption>
+            <thead>
+              <tr>
+                <th scope="col">SKU</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Última venta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SKU-001</td>
+                <td>Camisa azul</td>
+                <td>Ropa</td>
+                <td>18</td>
+                <td>$25</td>
+                <td>2025-08-10</td>
+              </tr>
+              <tr>
+                <td>SKU-002</td>
+                <td>Zapatillas RUN</td>
+                <td>Calzado</td>
+                <td>5</td>
+                <td>$72</td>
+                <td>2025-08-09</td>
+              </tr>
+              <!-- Agrega más filas de ejemplo según necesites -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p>© 2025 MiEmpresa — Dashboard de práctica. <span class="muted">Diseño accesible y responsivo</span></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
